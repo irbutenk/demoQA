@@ -3,11 +3,12 @@ import { Helpers } from "./helpers";
 test.describe("Student Registration Form", () => {
   test.describe.configure({ mode: "serial" });
 
-  test("Validate Required Fields", async ({ page }) => {
+  test("Complete form and submit", async ({ page }) => {
     await page.goto("https://demoqa.com/automation-practice-form/");
 
     const inputValue = await Helpers.getText(page,"(//label[normalize-space(text())='Email']/following::input)[1]");
     await Helpers.fillMandatoryRegistrFields(page);
+    await expect(page.locator("//div[normalize-space(text())='Thanks for submitting the form']")).toBeVisible();
     await expect(page.locator("tbody")).toContainText("Iryna Test");
     await expect(page.locator("tbody")).toContainText(inputValue);
     await expect(page.locator("tbody")).toContainText("Other");
