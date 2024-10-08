@@ -5,8 +5,8 @@ test.describe("Student Registration Form", () => {
 
   test("Complete form and submit", async ({ page }) => {
     await page.goto("https://demoqa.com/automation-practice-form/");
-
     const inputValue = await Helpers.getText(page,"(//label[normalize-space(text())='Email']/following::input)[1]");
+    //await page.setInputFiles('#uploadPicture', 'path/to/your/image.png'); 
     await Helpers.fillMandatoryRegistrFields(page);
     await expect(page.locator("//div[normalize-space(text())='Thanks for submitting the form']")).toBeVisible();
     await expect(page.locator("tbody")).toContainText("Iryna Test");
@@ -34,7 +34,6 @@ test.describe("Student Registration Form", () => {
 
   test("Checking the Headers of table", async ({ page }) => {
     await page.goto("https://demoqa.com/automation-practice-form/");
-    //await page.setInputFiles('#uploadPicture', 'path/to/your/image.png'); 
     await Helpers.fillMandatoryRegistrFields(page);
     const successMessageSelector = "//div[normalize-space(text())='Thanks for submitting the form']";
     await page.waitForSelector(successMessageSelector, { state: 'visible' });
