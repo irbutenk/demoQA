@@ -34,7 +34,7 @@ test.describe("Student Registration Form", () => {
 
   test("Checking the Headers of table", async ({ page }) => {
     await page.goto("https://demoqa.com/automation-practice-form/");
-    await page.setInputFiles('#uploadPicture', 'path/to/your/image.png'); 
+    //await page.setInputFiles('#uploadPicture', 'path/to/your/image.png'); 
     await Helpers.fillMandatoryRegistrFields(page);
     const successMessageSelector = "//div[normalize-space(text())='Thanks for submitting the form']";
     await page.waitForSelector(successMessageSelector, { state: 'visible' });

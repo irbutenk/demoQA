@@ -9,7 +9,7 @@ export class Helpers {
     const selectedDomain = domain[Math.floor(Math.random() * domain.length)];
     return `${username}@${selectedDomain}`;
   }
-  static async getText(page: Page, locator) {
+  static async getText(page: Page, locator: string) {
     const inputLocator = page.locator(locator);
     const inputValue = await inputLocator.inputValue();
     console.log(`value from input: ${inputValue}`);
